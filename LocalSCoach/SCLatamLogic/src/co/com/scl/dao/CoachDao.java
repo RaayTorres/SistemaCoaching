@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.Categoria;
 import co.com.scl.modelo.Coach;
 import java.util.List;
 import javax.annotation.Resource;
@@ -88,4 +89,9 @@ public class CoachDao
         return em.createNamedQuery("Coach.findAll").getResultList();
     }
 
+    
+    public Coach findByIdCategoria(Coach coach){
+    	return em.find(Coach.class, coach.getIdCoach());
+    	
+    }
 }

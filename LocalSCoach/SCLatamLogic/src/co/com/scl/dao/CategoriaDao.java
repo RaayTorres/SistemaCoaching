@@ -88,4 +88,9 @@ public class CategoriaDao
         return em.createNamedQuery("Categoria.findAll").getResultList();
     }
 
+    public Categoria findByIdCategoria(Categoria categoria){
+    	return em.find(Categoria.class, categoria.getIdCat());
+    	
+    }
+    
 }

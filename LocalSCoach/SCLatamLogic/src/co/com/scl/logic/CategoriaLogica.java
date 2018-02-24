@@ -31,6 +31,7 @@ public class CategoriaLogica implements  ICategoriaLogica
 		// TODO Auto-generated method stub
 		//TODO PROBANDO
 		// TODO probando 2
+		//TODO Me preocupa el front end :v
 	}
 
 	@Override

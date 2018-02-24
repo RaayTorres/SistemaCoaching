@@ -90,9 +90,9 @@ public class CoachDao implements  ICoachDao
 
  
 	@Override
-	public Coach findByIdCoach(Coach coach) {
+	public Coach findByIdCoach(long coach) {
 		
-    	return em.find(Coach.class, coach.getIdCoach());
+    	return em.find(Coach.class, coach);
 
 	}
 }

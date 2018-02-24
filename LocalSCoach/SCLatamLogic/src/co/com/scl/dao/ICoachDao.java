@@ -39,6 +39,6 @@ public interface ICoachDao
     public List<Coach> getCoachFindAll();
 
     
-    public Coach findByIdCoach(Coach coach);
+    public Coach findByIdCoach(long coach);
 
 }

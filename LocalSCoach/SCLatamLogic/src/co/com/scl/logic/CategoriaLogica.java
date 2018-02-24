@@ -32,7 +32,7 @@ public class CategoriaLogica implements  ICategoriaLogica
 		//TODO PROBANDO
 		// TODO Genera error plox :v
 		//TODO Me preocupa el front end :v
-		// No deberia borrar esto
+		// No deberia borrar esto x2
 	}
 
 	@Override

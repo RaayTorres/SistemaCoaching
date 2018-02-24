@@ -19,10 +19,12 @@ import javax.persistence.Query;
 public class CategoriaLogica implements  ICategoriaLogica
 {
 
+	// Esto es una prueba de concepto
+	
 	@Override
 	public void saveCategoria(Categoria cat) throws Exception {
 		// TODO Auto-generated method stub
-		
+		//TODO PROBANDO
 	}
 
 	@Override

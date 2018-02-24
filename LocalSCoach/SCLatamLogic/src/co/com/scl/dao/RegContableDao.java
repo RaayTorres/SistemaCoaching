@@ -16,8 +16,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "RegContableDao", mappedName = "SCLatamLogic-RegContableDao")
-public class RegContableDao
-        implements  IRegContableDao
+public class RegContableDao implements  IRegContableDao
 {
 
     /**
@@ -87,5 +86,13 @@ public class RegContableDao
     public List<RegContable> getRegContableFindAll() {
         return em.createNamedQuery("RegContable.findAll").getResultList();
     }
+
+
+
+	@Override
+	public RegContable findByIdRegContable(RegContable regContable) {
+		
+		return em.find(RegContable.class, regContable.getIdHis());
+	}
 
 }

@@ -16,8 +16,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "EstadoDao", mappedName = "SCLatamLogic-EstadoDao")
-public class EstadoDao
-        implements  IEstadoDao
+public class EstadoDao  implements  IEstadoDao
 {
 
     /**
@@ -87,5 +86,13 @@ public class EstadoDao
     public List<Estado> getEstadoFindAll() {
         return em.createNamedQuery("Estado.findAll").getResultList();
     }
+
+
+
+	@Override
+	public Estado findByIdEstado(Estado est) {
+	
+		return em.find(Estado.class, est.getIdEstado());
+	}
 
 }

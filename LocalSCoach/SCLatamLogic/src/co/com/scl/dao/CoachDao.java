@@ -17,8 +17,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "CoachDao", mappedName = "SCLatamLogic-CoachDao")
-public class CoachDao
-        implements  ICoachDao
+public class CoachDao implements  ICoachDao
 {
 
     /**
@@ -89,9 +88,11 @@ public class CoachDao
         return em.createNamedQuery("Coach.findAll").getResultList();
     }
 
-    
-    public Coach findByIdCategoria(Coach coach){
+ 
+	@Override
+	public Coach findByIdCoach(Coach coach) {
+		
     	return em.find(Coach.class, coach.getIdCoach());
-    	
-    }
+
+	}
 }

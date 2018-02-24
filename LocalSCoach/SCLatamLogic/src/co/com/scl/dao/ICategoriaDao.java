@@ -36,5 +36,8 @@ public interface ICategoriaDao
      * @generated DT_ID=none
      */
     public List<Categoria> getCategoriaFindAll();
+    
+    
+    public Categoria findByIdCategoria(Categoria categoria);
 
 }

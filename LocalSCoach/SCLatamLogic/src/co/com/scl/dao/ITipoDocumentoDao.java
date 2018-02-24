@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.SesCoaching;
 import co.com.scl.modelo.TipoDocumento;
 import java.util.List;
 import javax.ejb.Remote;
@@ -36,5 +37,8 @@ public interface ITipoDocumentoDao
      * @generated DT_ID=none
      */
     public List<TipoDocumento> getTipoDocumentoFindAll();
+    
+
+    public TipoDocumento findByIdTipoDocumento(TipoDocumento tipoDocumento);
 
 }

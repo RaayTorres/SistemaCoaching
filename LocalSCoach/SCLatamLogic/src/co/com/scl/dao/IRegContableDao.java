@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.ProcCoaching;
 import co.com.scl.modelo.RegContable;
 import java.util.List;
 import javax.ejb.Remote;
@@ -37,4 +38,6 @@ public interface IRegContableDao
      */
     public List<RegContable> getRegContableFindAll();
 
+    
+    public RegContable findByIdRegContable(RegContable regContable);
 }

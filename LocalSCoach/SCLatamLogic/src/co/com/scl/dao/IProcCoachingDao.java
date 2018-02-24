@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.Parametro;
 import co.com.scl.modelo.ProcCoaching;
 import java.util.List;
 import javax.ejb.Remote;
@@ -36,5 +37,7 @@ public interface IProcCoachingDao
      * @generated DT_ID=none
      */
     public List<ProcCoaching> getProcCoachingFindAll();
+    
+    public ProcCoaching findByIdProcCoaching(ProcCoaching procCoaching);
 
 }

@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.Categoria;
 import co.com.scl.modelo.Coach;
 import java.util.List;
 import javax.ejb.Remote;
@@ -36,5 +37,8 @@ public interface ICoachDao
      * @generated DT_ID=none
      */
     public List<Coach> getCoachFindAll();
+
+    
+    public Coach findByIdCoach(Coach coach);
 
 }

@@ -16,8 +16,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "TipoDocumentoDao", mappedName = "SCLatamLogic-TipoDocumentoDao")
-public class TipoDocumentoDao
-        implements ITipoDocumentoDao
+public class TipoDocumentoDao  implements ITipoDocumentoDao
 {
 
     /**
@@ -87,5 +86,12 @@ public class TipoDocumentoDao
     public List<TipoDocumento> getTipoDocumentoFindAll() {
         return em.createNamedQuery("TipoDocumento.findAll").getResultList();
     }
+
+
+
+	@Override
+	public TipoDocumento findByIdTipoDocumento(TipoDocumento tipoDocumento) {
+		return em.find(TipoDocumento.class, tipoDocumento.getIdDoc());
+	}
 
 }

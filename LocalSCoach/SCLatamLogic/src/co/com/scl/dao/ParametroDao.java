@@ -16,8 +16,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "ParametroDao", mappedName = "SCLatamLogic-ParametroDao")
-public class ParametroDao
-        implements  IParametroDao
+public class ParametroDao  implements  IParametroDao
 {
 
     /**
@@ -87,5 +86,13 @@ public class ParametroDao
     public List<Parametro> getParametroFindAll() {
         return em.createNamedQuery("Parametro.findAll").getResultList();
     }
+
+
+
+	@Override
+	public Parametro findByIdParametro(Parametro param) {
+		
+		return em.find(Parametro.class, param.getIdParam());
+	}
 
 }

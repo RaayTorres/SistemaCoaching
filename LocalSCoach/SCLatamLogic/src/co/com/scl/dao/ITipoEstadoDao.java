@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.TipoDocumento;
 import co.com.scl.modelo.TipoEstado;
 import java.util.List;
 import javax.ejb.Remote;
@@ -36,5 +37,7 @@ public interface ITipoEstadoDao
      * @generated DT_ID=none
      */
     public List<TipoEstado> getTipoEstadoFindAll();
+    
+    public TipoEstado findByIdTipoEstado(TipoEstado tipoEstado);
 
 }

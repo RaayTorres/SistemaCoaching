@@ -16,8 +16,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "SesCoachingDao", mappedName = "SCLatamLogic-SesCoachingDao")
-public class SesCoachingDao
-        implements  ISesCoachingDao
+public class SesCoachingDao  implements  ISesCoachingDao
 {
 
     /**
@@ -87,5 +86,13 @@ public class SesCoachingDao
     public List<SesCoaching> getSesCoachingFindAll() {
         return em.createNamedQuery("SesCoaching.findAll").getResultList();
     }
+
+
+
+	@Override
+	public SesCoaching findByIdSesCoaching(SesCoaching sesCoaching) {
+		
+		return em.find(SesCoaching.class, sesCoaching.getIdSesi());
+	}
 
 }

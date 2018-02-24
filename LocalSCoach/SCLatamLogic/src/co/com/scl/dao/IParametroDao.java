@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.Categoria;
 import co.com.scl.modelo.Parametro;
 import java.util.List;
 import javax.ejb.Remote;
@@ -36,5 +37,8 @@ public interface IParametroDao
      * @generated DT_ID=none
      */
     public List<Parametro> getParametroFindAll();
+    
+    public Parametro findByIdParametro(Parametro param);
+
 
 }

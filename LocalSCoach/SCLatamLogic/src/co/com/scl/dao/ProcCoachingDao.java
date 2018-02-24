@@ -16,8 +16,7 @@ import javax.persistence.Query;
  * @generated DT_ID=none
  */
 @Stateless(name = "ProcCoachingDao", mappedName = "SCLatamLogic-ProcCoachingDao")
-public class ProcCoachingDao
-        implements  IProcCoachingDao
+public class ProcCoachingDao  implements  IProcCoachingDao
 {
 
     /**
@@ -87,5 +86,13 @@ public class ProcCoachingDao
     public List<ProcCoaching> getProcCoachingFindAll() {
         return em.createNamedQuery("ProcCoaching.findAll").getResultList();
     }
+
+
+
+	@Override
+	public ProcCoaching findByIdProcCoaching(ProcCoaching procCoaching) {
+		
+		return em.find(ProcCoaching.class, procCoaching.getIdProc());
+	}
 
 }

@@ -1,5 +1,6 @@
 package co.com.scl.dao;
 
+import co.com.scl.modelo.RegContable;
 import co.com.scl.modelo.SesCoaching;
 import java.util.List;
 import javax.ejb.Remote;
@@ -36,5 +37,8 @@ public interface ISesCoachingDao
      * @generated DT_ID=none
      */
     public List<SesCoaching> getSesCoachingFindAll();
+    
+    
+    public SesCoaching findByIdSesCoaching(SesCoaching sesCoaching);
 
 }

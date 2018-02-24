@@ -30,8 +30,9 @@ public class CategoriaLogica implements  ICategoriaLogica
 	public void saveCategoria(Categoria cat) throws Exception {
 		// TODO Auto-generated method stub
 		//TODO PROBANDO
-		// TODO probando 2
+		// TODO Genera error plox :v
 		//TODO Me preocupa el front end :v
+		// No deberia borrar esto
 	}
 
 	@Override

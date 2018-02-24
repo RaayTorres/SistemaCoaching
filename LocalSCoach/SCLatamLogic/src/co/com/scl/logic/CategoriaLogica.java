@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.ICategoriaDao;
 import co.com.scl.modelo.Categoria;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -19,6 +21,9 @@ import javax.persistence.Query;
 public class CategoriaLogica implements  ICategoriaLogica
 {
 
+	@EJB
+	private ICategoriaDao categoriaDao;
+	
 	// Esto es una prueba de concepto
 	
 	@Override
@@ -41,13 +46,13 @@ public class CategoriaLogica implements  ICategoriaLogica
 
 	@Override
 	public Categoria findByIdCategoria(long catId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return categoriaDao.findByIdCategoria(catId);
 	}
 
 	@Override
 	public List<Categoria> findAllCategoria() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

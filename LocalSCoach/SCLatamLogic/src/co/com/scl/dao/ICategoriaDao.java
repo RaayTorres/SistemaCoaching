@@ -38,6 +38,6 @@ public interface ICategoriaDao
     public List<Categoria> getCategoriaFindAll();
     
     
-    public Categoria findByIdCategoria(Categoria categoria);
+    public Categoria findByIdCategoria(long idcategoria);
 
 }

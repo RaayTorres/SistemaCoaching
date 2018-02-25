@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.IRegContableDao;
 import co.com.scl.modelo.RegContable;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,38 +19,96 @@ import javax.persistence.Query;
  */
 @Stateless
 public class RegContableLogica
-        implements  IRegContableLogica
+implements  IRegContableLogica
 {
 
-	@Override
+
+	@EJB
+	private IRegContableDao registroDao;
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveRegContable(RegContable reg) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (reg==null) {
+
+			throw new Exception("El registro es invalido o no existe");
+		}
+
+		if (reg.getCoachee()==null) {
+
+			throw new Exception("El registro debe tener a un cliente asignado");
+		}
+
+		if (reg.getFechaPago()==null) {
+
+			throw new Exception("El registro debe tener una fecha asignada");
+		}
+
+		if (reg.getValor()<0) {
+
+			throw new Exception("El valor introducido no es valido");
+
+		}
+
+		if (reg.getTipo()==null|| reg.getTipo().trim().equals("")) {
+
+			throw new Exception("El tipo de registo no es valido");
+		}
+
+		registroDao.persistRegContable(reg);
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateRegContable(RegContable reg) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if (reg.getCoachee()==null) {
+
+			throw new Exception("El registro debe tener a un cliente asignado");
+		}
+
+		if (reg.getFechaPago()==null) {
+
+			throw new Exception("El registro debe tener una fecha asignada");
+		}
+
+		if (reg.getValor()<0) {
+
+			throw new Exception("El valor introducido no es valido");
+
+		}
+
+		if (reg.getTipo()==null|| reg.getTipo().trim().equals("")) {
+
+			throw new Exception("El tipo de registo no es valido");
+		}
+
+		registroDao.mergeRegContable(reg);
+
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteRegContable(RegContable reg) throws Exception {
-		// TODO Auto-generated method stub
+
+		if (reg==null) {
+
+			throw new Exception("El registro que está tratando de eliminar no existe");
+		}
 		
+		registroDao.removeRegContable(reg);
+
 	}
 
-	@Override
+	@TransactionAttribute
 	public RegContable findByIdRegContable(long regId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return  registroDao.findByIdRegContable(regId);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<RegContable> findAllRegContable() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return registroDao.getRegContableFindAll();
 	}
 
- 
+
 }

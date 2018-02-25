@@ -38,7 +38,7 @@ public interface ICoacheeDao
      */
     public List<Coachee> getCoacheeFindAll();
     
-    public Coachee findByIdCoachee(Coachee coachee);
+    public Coachee findByIdCoachee(long idCoachee);
 
 
 }

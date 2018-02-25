@@ -39,6 +39,6 @@ public interface ISesCoachingDao
     public List<SesCoaching> getSesCoachingFindAll();
     
     
-    public SesCoaching findByIdSesCoaching(SesCoaching sesCoaching);
+    public SesCoaching findByIdSesCoaching(long idSesCoaching);
 
 }

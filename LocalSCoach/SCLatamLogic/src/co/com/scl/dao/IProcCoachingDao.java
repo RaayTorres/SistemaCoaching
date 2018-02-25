@@ -38,6 +38,6 @@ public interface IProcCoachingDao
      */
     public List<ProcCoaching> getProcCoachingFindAll();
     
-    public ProcCoaching findByIdProcCoaching(ProcCoaching procCoaching);
+    public ProcCoaching findByIdProcCoaching(long idProcCoaching);
 
 }

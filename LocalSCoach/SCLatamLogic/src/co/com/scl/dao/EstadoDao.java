@@ -89,10 +89,10 @@ public class EstadoDao  implements  IEstadoDao
 
 
 
-	@Override
-	public Estado findByIdEstado(Estado est) {
 	
-		return em.find(Estado.class, est.getIdEstado());
+	public Estado findByIdEstado(long idEst) {
+	
+		return em.find(Estado.class, idEst);
 	}
 
 }

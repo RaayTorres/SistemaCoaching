@@ -38,7 +38,7 @@ public interface IParametroDao
      */
     public List<Parametro> getParametroFindAll();
     
-    public Parametro findByIdParametro(Parametro param);
+    public Parametro findByIdParametro(long idParam);
 
 
 }

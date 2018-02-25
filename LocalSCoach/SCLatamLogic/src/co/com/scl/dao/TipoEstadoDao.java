@@ -89,10 +89,10 @@ public class TipoEstadoDao  implements ITipoEstadoDao
 
 
 
-	@Override
-	public TipoEstado findByIdTipoEstado(TipoEstado tipoEstado) {
+	
+	public TipoEstado findByIdTipoEstado(long idTipoEstado) {
 		
-		return em.find(TipoEstado.class, tipoEstado.getIdTestado());
+		return em.find(TipoEstado.class, idTipoEstado);
 	}
 
 }

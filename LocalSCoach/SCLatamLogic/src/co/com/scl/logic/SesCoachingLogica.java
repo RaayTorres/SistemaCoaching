@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.ISesCoachingDao;
 import co.com.scl.modelo.SesCoaching;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,39 +19,84 @@ import javax.persistence.Query;
  */
 @Stateless
 public class SesCoachingLogica
-        implements  ISesCoachingLogica
+implements  ISesCoachingLogica
 {
 
-	@Override
+	@EJB
+	private ISesCoachingDao sesionDao;
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveSesCoaching(SesCoaching ses) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (ses==null) {
+
+			throw new Exception("La sesión es invalida");
+		}
+
+		if (ses.getEstado()==null) {
+
+			throw new Exception("La sesión debe tener un estado asignado");
+		}
+
+		if (ses.getProcCoaching()==null) {
+
+			throw new Exception("La sesion debe estar asignada a un proceso de coaching");
+		}
+
+		if (ses.getIdHis()<0) {
+
+			throw new Exception("Ingrese un valor valido");
+		}
+
+		sesionDao.persistSesCoaching(ses);
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateSescCoaching(SesCoaching ses) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (ses.getEstado()==null) {
+
+			throw new Exception("La sesión debe tener un estado asignado");
+		}
+
+		if (ses.getProcCoaching()==null) {
+
+			throw new Exception("La sesion debe estar asignada a un proceso de coaching");
+		}
+
+		if (ses.getIdHis()<0) {
+
+			throw new Exception("Ingrese un valor valido");
+		}
+
+		sesionDao.mergeSesCoaching(ses);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteSesCoaching(SesCoaching ses) throws Exception {
-		// TODO Auto-generated method stub
+
+		if (ses==null) {
+
+			throw new Exception("La sesión que está tratando de eliminar no existe");
+		}
 		
+		sesionDao.removeSesCoaching(ses);
+
 	}
 
-	@Override
+	@TransactionAttribute
 	public SesCoaching findByIdSesCoaching(long sesId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sesionDao.findByIdSesCoaching(sesId);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<SesCoaching> findAllSesCoaching() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return sesionDao.getSesCoachingFindAll();
 	}
 
-   
+
 
 }

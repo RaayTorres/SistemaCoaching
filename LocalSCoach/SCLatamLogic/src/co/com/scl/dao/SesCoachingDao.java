@@ -89,10 +89,10 @@ public class SesCoachingDao  implements  ISesCoachingDao
 
 
 
-	@Override
-	public SesCoaching findByIdSesCoaching(SesCoaching sesCoaching) {
+	
+	public SesCoaching findByIdSesCoaching(long idSesCoaching) {
 		
-		return em.find(SesCoaching.class, sesCoaching.getIdSesi());
+		return em.find(SesCoaching.class, idSesCoaching);
 	}
 
 }

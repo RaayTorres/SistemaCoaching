@@ -23,42 +23,86 @@ public class CategoriaLogica implements  ICategoriaLogica
 
 	@EJB
 	private ICategoriaDao categoriaDao;
-	
-	// Esto es una prueba de concepto
-	
-	@Override
+
+
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveCategoria(Categoria cat) throws Exception {
-		// TODO Auto-generated method stub
-		//TODO PROBANDO
-		// TODO Genera error plox :v
-		//TODO Me preocupa el front end :v
-		// No deberia borrar esto x2
+
+		if (cat==null) {
+
+			throw new Exception("Debe escribir una categoría valida");
+		}
+
+		if (cat.getCatNombre()==null || cat.getCatNombre().trim().equals("")) {
+
+			throw new Exception("Debe ingresar un nombre para la categoría que va a crear");
+		}
+		if (cat.getHoraPagada()<0) {
+
+			throw new Exception("La cantidad de horas ingresadas es invalida");
+		}
+		if (cat.getHoraProbono()<0) {
+
+			throw new Exception("La cantidad de horas ingresadas es invalida");
+		}
+		if (cat.getNombreCorto()==null || cat.getNombreCorto().trim().equals("")) {
+			
+			throw new Exception("Debe ingresar un nombre corto para la categoría");
+		}
+		
+		categoriaDao.persistCategoria(cat);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateCategoria(Categoria cat) throws Exception {
-		// TODO Auto-generated method stub
 		
+		if (cat.getCatNombre()==null || cat.getCatNombre().trim().equals("")) {
+
+			throw new Exception("Debe ingresar un nombre para la categoría que va a crear");
+		}
+		if (cat.getHoraPagada()<0) {
+
+			throw new Exception("La cantidad de horas ingresadas es invalida");
+		}
+		if (cat.getHoraProbono()<0) {
+
+			throw new Exception("La cantidad de horas ingresadas es invalida");
+		}
+		if (cat.getNombreCorto()==null || cat.getNombreCorto().trim().equals("")) {
+			
+			throw new Exception("Debe ingresar un nombre corto para la categoría");
+		}
+		
+		categoriaDao.mergeCategoria(cat);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteCategoria(Categoria cat) throws Exception {
-		// TODO Auto-generated method stub
 		
+		if (cat==null) {
+			
+			throw new Exception("La categoría que está tratando de eliminar no existe");
+		}
+		
+		categoriaDao.removeCategoria(cat);
+
 	}
 
-	@Override
+	@TransactionAttribute
 	public Categoria findByIdCategoria(long catId) throws Exception {
-		
+
 		return categoriaDao.findByIdCategoria(catId);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<Categoria> findAllCategoria() {
-		
-		return null;
+
+		return categoriaDao.getCategoriaFindAll();
 	}
 
-    
+
 
 }

@@ -89,10 +89,10 @@ public class RegContableDao implements  IRegContableDao
 
 
 
-	@Override
-	public RegContable findByIdRegContable(RegContable regContable) {
+	
+	public RegContable findByIdRegContable(long idRegContable) {
 		
-		return em.find(RegContable.class, regContable.getIdHis());
+		return em.find(RegContable.class, idRegContable);
 	}
 
 }

@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.ITipoEstadoDao;
 import co.com.scl.modelo.TipoEstado;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,39 +19,67 @@ import javax.persistence.Query;
  */
 @Stateless
 public class TipoEstadoLogica
-        implements ITipoEstadoLogica
+implements ITipoEstadoLogica
 {
 
-	@Override
+	@EJB
+	private ITipoEstadoDao tipoEstadoDao;
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveTipoEstado(TipoEstado tpEstado) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (tpEstado==null) {
+
+			throw new Exception("El tipo de estado no se encuentra registrado en la base de datos");
+		}
+
+		if (tpEstado==null|| tpEstado.getNombreTipoEstado().trim().equals("")) {
+
+			throw new Exception("Ingrese un nombre para el tipo de estado");
+		}
+
+		tipoEstadoDao.persistTipoEstado(tpEstado);
+
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateTipoEstado(TipoEstado tpEstado) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (tpEstado==null|| tpEstado.getNombreTipoEstado().trim().equals("")) {
+
+			throw new Exception("Ingrese un nombre para el tipo de estado");
+		}
+
+		tipoEstadoDao.mergeTipoEstado(tpEstado);
+
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteTipoEstado(TipoEstado tpEstado) throws Exception {
-		// TODO Auto-generated method stub
 		
+		if (tpEstado==null) {
+
+			throw new Exception("El tipo de estado no se encuentra registrado en la base de datos");
+		}
+		
+		tipoEstadoDao.removeTipoEstado(tpEstado);
+
 	}
 
-	@Override
+	@TransactionAttribute
 	public TipoEstado findByIdTipoEstado(long tpEstadoId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return tipoEstadoDao.findByIdTipoEstado(tpEstadoId);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<TipoEstado> findAllTipoEstado() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return tipoEstadoDao.getTipoEstadoFindAll();
 	}
 
-    
+
 
 }

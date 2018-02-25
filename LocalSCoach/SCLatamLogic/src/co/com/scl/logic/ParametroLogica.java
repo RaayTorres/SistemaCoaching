@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.IParametroDao;
 import co.com.scl.modelo.Parametro;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,39 +19,54 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ParametroLogica
-        implements  IParametroLogica
+implements  IParametroLogica
 {
 
-	@Override
+	@EJB
+	private IParametroDao parametroDao;
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveParametro(Parametro param) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (param==null) {
+
+			throw new Exception("El parametro no puede ser nulo");
+		}
+
+		parametroDao.persistParametro(param);
+
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED) 
 	public void updateParametro(Parametro param) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		parametroDao.mergeParametro(param);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED) 
 	public void deleteParametro(Parametro param) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (param==null) {
+
+			throw new Exception("La categoría que está tratando de eliminar no existe");
+		}
+
 	}
 
-	@Override
+	@TransactionAttribute 
 	public Parametro findByIdParametro(long param) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return parametroDao.findByIdParametro(param);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<Parametro> findAllParametro() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return parametroDao.getParametroFindAll();
 	}
 
-   
+
 
 }

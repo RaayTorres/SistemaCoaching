@@ -89,10 +89,10 @@ public class ParametroDao  implements  IParametroDao
 
 
 
-	@Override
-	public Parametro findByIdParametro(Parametro param) {
+	
+	public Parametro findByIdParametro(long idParam) {
 		
-		return em.find(Parametro.class, param.getIdParam());
+		return em.find(Parametro.class, idParam);
 	}
 
 }

@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.ITipoDocumentoDao;
 import co.com.scl.modelo.TipoDocumento;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,39 +19,67 @@ import javax.persistence.Query;
  */
 @Stateless
 public class TipoDocumentoLogica
-        implements ITipoDocumentoLogica
+implements ITipoDocumentoLogica
 {
 
-	@Override
+
+	@EJB
+	private ITipoDocumentoDao tipoDocumentoDao;
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveTipoDocumento(TipoDocumento tpDoc) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (tpDoc==null) {
+
+			throw new Exception("El tipo de documento no se encuentra en la base de datos");
+		}
+
+		if (tpDoc.getTdocNombre()==null || tpDoc.getTdocNombre().trim().equals("")) {
+
+			throw new Exception("Por favor ingrese un nombre para la categoria");
+
+		}
+
+		tipoDocumentoDao.persistTipoDocumento(tpDoc);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateTipoDocumento(TipoDocumento tpDoc) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (tpDoc.getTdocNombre()==null || tpDoc.getTdocNombre().trim().equals("")) {
+
+			throw new Exception("Por favor ingrese un nombre para la categoria");
+
+		}
+
+		tipoDocumentoDao.mergeTipoDocumento(tpDoc);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteTipoDocumento(TipoDocumento tpDoc) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (tpDoc==null) {
+
+			throw new Exception("El tipo de documento no se encuentra en la base de datos");
+		}
+
+
 	}
 
-	@Override
+	@TransactionAttribute
 	public TipoDocumento findByIdTipoDocumento(long tpDocId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return tipoDocumentoDao.findByIdTipoDocumento(tpDocId);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<TipoDocumento> findAllTipoDocumento() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return tipoDocumentoDao.getTipoDocumentoFindAll();
 	}
 
-   
+
 
 }

@@ -39,6 +39,6 @@ public interface ITipoDocumentoDao
     public List<TipoDocumento> getTipoDocumentoFindAll();
     
 
-    public TipoDocumento findByIdTipoDocumento(TipoDocumento tipoDocumento);
+    public TipoDocumento findByIdTipoDocumento(long idTipoDocumento);
 
 }

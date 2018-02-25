@@ -39,5 +39,5 @@ public interface IRegContableDao
     public List<RegContable> getRegContableFindAll();
 
     
-    public RegContable findByIdRegContable(RegContable regContable);
+    public RegContable findByIdRegContable(long idRegContable);
 }

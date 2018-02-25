@@ -38,6 +38,6 @@ public interface ITipoEstadoDao
      */
     public List<TipoEstado> getTipoEstadoFindAll();
     
-    public TipoEstado findByIdTipoEstado(TipoEstado tipoEstado);
+    public TipoEstado findByIdTipoEstado(long idTipoEstado);
 
 }

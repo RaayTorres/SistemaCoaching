@@ -89,10 +89,10 @@ public class CoacheeDao  implements  ICoacheeDao
 
 
 
-	@Override
-	public Coachee findByIdCoachee(Coachee coachee) {
+	
+	public Coachee findByIdCoachee(long idCoachee) {
 		
-		return em.find(Coachee.class, coachee.getIdCoachee());
+		return em.find(Coachee.class, idCoachee);
 	}
 
 }

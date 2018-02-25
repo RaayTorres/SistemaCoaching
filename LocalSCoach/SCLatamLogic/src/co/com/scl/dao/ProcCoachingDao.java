@@ -89,10 +89,10 @@ public class ProcCoachingDao  implements  IProcCoachingDao
 
 
 
-	@Override
-	public ProcCoaching findByIdProcCoaching(ProcCoaching procCoaching) {
+	
+	public ProcCoaching findByIdProcCoaching(long idProcCoaching) {
 		
-		return em.find(ProcCoaching.class, procCoaching.getIdProc());
+		return em.find(ProcCoaching.class, idProcCoaching);
 	}
 
 }

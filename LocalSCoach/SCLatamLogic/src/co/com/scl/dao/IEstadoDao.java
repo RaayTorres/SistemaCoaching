@@ -38,6 +38,6 @@ public interface IEstadoDao
      */
     public List<Estado> getEstadoFindAll();
     
-    public Estado findByIdEstado(Estado est);
+    public Estado findByIdEstado(long idEst);
 
 }

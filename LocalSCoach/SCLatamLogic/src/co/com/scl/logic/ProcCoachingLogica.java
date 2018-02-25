@@ -1,8 +1,10 @@
 package co.com.scl.logic;
 
+import co.com.scl.dao.IProcCoachingDao;
 import co.com.scl.modelo.ProcCoaching;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,37 +19,83 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ProcCoachingLogica
-        implements  IProcCoachingLogica
+implements  IProcCoachingLogica
 {
 
-	@Override
+	@EJB
+	private IProcCoachingDao procesoDao;
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void saveProcCoaching(ProcCoaching proc) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (proc==null) {
+
+			throw new Exception("El proceso no es valido o no existe");
+		}
+
+		if (proc.getCoach()==null) {
+
+			throw new Exception("El proceso debe tener un coach asignado");
+		}
+
+		if (proc.getCoachee()==null) {
+
+			throw new Exception("El proceso debe tener un cliente asignado");
+		}
+
+		if (proc.getRegContable()==null) {
+
+			throw new Exception("El proceso debe tener un registro contable");
+		}
+
+		procesoDao.persistProcCoaching(proc);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateProcCoaching(ProcCoaching proc) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		if (proc.getCoach()==null) {
+
+			throw new Exception("El proceso debe tener un coach asignado");
+		}
+
+		if (proc.getCoachee()==null) {
+
+			throw new Exception("El proceso debe tener un cliente asignado");
+		}
+
+		if (proc.getRegContable()==null) {
+
+			throw new Exception("El proceso debe tener un registro contable");
+		}
+
+		procesoDao.mergeProcCoaching(proc);
+
 	}
 
-	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteProcCoaching(ProcCoaching proc) throws Exception {
-		// TODO Auto-generated method stub
+
+		if (proc==null) {
+
+			throw new Exception("El proceso que está tratando de eliminar no existe");
+		}
 		
+		procesoDao.removeProcCoaching(proc);
+
 	}
 
-	@Override
+	@TransactionAttribute
 	public ProcCoaching findByIdProcCoaching(long procId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return procesoDao.findByIdProcCoaching(procId);
 	}
 
-	@Override
+	@TransactionAttribute
 	public List<ProcCoaching> findAllProcCoaching() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return procesoDao.getProcCoachingFindAll();
 	}
 
 

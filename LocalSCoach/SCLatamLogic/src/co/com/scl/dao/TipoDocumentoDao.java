@@ -89,9 +89,9 @@ public class TipoDocumentoDao  implements ITipoDocumentoDao
 
 
 
-	@Override
-	public TipoDocumento findByIdTipoDocumento(TipoDocumento tipoDocumento) {
-		return em.find(TipoDocumento.class, tipoDocumento.getIdDoc());
+
+	public TipoDocumento findByIdTipoDocumento(long idTipoDocumento) {
+		return em.find(TipoDocumento.class, idTipoDocumento);
 	}
 
 }

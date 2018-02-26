@@ -74,10 +74,7 @@ implements  ICoachLogica
 			throw new Exception ("Debe indicar en que estado se encuentra el cliente");
 		}
 
-		if (coach.getCategoria()==null) {
-
-			throw new Exception("Deebe ingresar una categoria");
-		}
+		
 
 		coachDao.persistCoach(coach);
 	}

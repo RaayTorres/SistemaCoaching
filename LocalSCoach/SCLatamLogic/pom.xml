@@ -11,8 +11,24 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
+
+
+
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa -->
+<dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>org.eclipse.persistence.jpa</artifactId>
+    <version>2.7.0</version>
+</dependency>
 	
+	
+	<dependency>
+  <groupId>org.wildfly.plugins</groupId>
+  <artifactId>wildfly-maven-plugin</artifactId>
+  <version>1.2.1.Final</version>
+  <type>maven-plugin</type>
+</dependency>
 		<!-- Apache commons -->
 		<dependency>
 			<groupId>commons-validator</groupId>
@@ -35,6 +51,12 @@
 		</dependency>
 		<!-- Apache commons -->
 
+<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
+<dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>eclipselink</artifactId>
+    <version>2.5.0</version>
+</dependency>
 
 	</dependencies>
 	<build>
